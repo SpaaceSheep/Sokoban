@@ -1,0 +1,93 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://scripts/Main.cs" type="Script" id=1]
+[ext_resource path="res://scenes/Menu/MainMenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Login.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sound/MenuMusic.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/sound/SoundMovePlayer.wav" type="AudioStream" id=5]
+[ext_resource path="res://scripts/handleTheCrate/sound/SoundManager.cs" type="Script" id=6]
+[ext_resource path="res://assets/sound/SoundCrate.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sound/BtnLevel.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sound/BtnValidate.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sound/SoundHandle.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sound/BtnUnlocklLevel.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sound/SoundWin.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/sound/BtnRetry.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/menu fonts/fondtest.png" type="Texture" id=14]
+[ext_resource path="res://assets/material/shaderMaterial/Vignette_ShaderMaterial.tres" type="Material" id=15]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_intensity = 3.0
+glow_strength = 1.4
+glow_hdr_threshold = 1.2
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+VignetteDuration = 0.75
+menu = ExtResource( 2 )
+gameContainerMenuPath = NodePath("GameContainer/Menu")
+login = ExtResource( 3 )
+vignettePath = NodePath("CanvasLayer/Vignette")
+tweenPath = NodePath("CanvasLayer/Vignette/Tween")
+
+[node name="SoundManager" type="Node" parent="."]
+script = ExtResource( 6 )
+playerSound = NodePath("SoundPlayer")
+playerMusic = NodePath("MusicPlayer")
+movePlayer = NodePath("SoundMovePlayer")
+soundMovePlayer = ExtResource( 5 )
+soundCreate = ExtResource( 7 )
+soundHandle = ExtResource( 10 )
+soundWin = ExtResource( 12 )
+btnValidate = ExtResource( 9 )
+btnRetry = ExtResource( 13 )
+btnLevel = ExtResource( 8 )
+btnUnlockLevel = ExtResource( 11 )
+tweeMusicPath = NodePath("MusicPlayer/Tween")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="SoundManager/MusicPlayer"]
+
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="SoundManager"]
+
+[node name="SoundMovePlayer" type="AudioStreamPlayer" parent="SoundManager"]
+
+[node name="GameContainer" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="Node" parent="GameContainer"]
+
+[node name="Level" type="Node" parent="GameContainer"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 50
+
+[node name="Vignette" type="TextureRect" parent="CanvasLayer"]
+material = ExtResource( 15 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="CanvasLayer/Vignette"]

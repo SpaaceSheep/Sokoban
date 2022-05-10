@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Com.IsartDigital.HandleTheCrate.Menu.Loader.IsoLoader">
+    <Position X="15.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>SAAAAEEAACABgAIAAAEAAAEAAAAAAAAAQAACIQCAAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\level\loader\IsoLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.Level.Loader.RadarLoader">
+    <Position X="15.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>SAAAAEEAACABAAIAAAEAAAAAAAAAAAAAQAAAIQCAAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\level\loader\RadarLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.Menu.LevelContainer">
+    <Position X="13.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QKAhEQAUCCAAhRhAIgEAAAEhAAQAJAAAQEBUAAAAABg=</HashCode>
+      <FileName>scripts\handleTheCrate\level\LevelContainer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.Menu.ButtonLevel">
+    <Position X="10" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAEAAAAAAAAAAQAAAAAAAAACAAAAAABAAAAAAgAQAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\menu\ButtonLevel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.Menu.HighScores">
+    <Position X="6.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAgAAAAAACAAAAAAAAAACgAQAAAIAAAARAAEAAAAQAA=</HashCode>
+      <FileName>scripts\handleTheCrate\menu\HighScores.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.Menu.MainMenu">
+    <Position X="6.25" Y="1" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="Com.IsartDigital.HandleTheCrate.Menu.MainMenu.ChangeLanguage" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>scripts\handleTheCrate\menu\MainMenu.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QIGAAAAUACJQEQABUAAwAgAggQACpAQAQAAAowIQgAQ=</HashCode>
+      <FileName>scripts\handleTheCrate\menu\MainMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.Menu.SelectLevel">
+    <Position X="8.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAUOCEQABAAAAAAAAAkAAAESAAAQAEAACEAAAI=</HashCode>
+      <FileName>scripts\handleTheCrate\menu\SelectLevel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.Model.Object.CratePresenter">
+    <Position X="14.75" Y="24.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAEAAAAAAAAAAAAAAAAAAAAAAiAA=</HashCode>
+      <FileName>scripts\handleTheCrate\model\object\CratePresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.Model.Object.HandlePresenter">
+    <Position X="12.5" Y="20.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\model\object\HandlePresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.Model.Object.PlayerPresenter">
+    <Position X="19.25" Y="20.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAIAABAAEAAEAAQABAAAAAAAAAAQAAAAAABA=</HashCode>
+      <FileName>scripts\handleTheCrate\model\object\PlayerPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.Model.Object.TargetPresenter">
+    <Position X="21.5" Y="20.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\model\object\TargetPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.Model.Object.WallParentPresenter">
+    <Position X="17.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAABEAAAAAIAAAAABAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\model\object\WallParentPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.Model.Object.WallPresenter">
+    <Position X="17" Y="24.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAABEAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>scripts\handleTheCrate\model\object\WallPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.Model.GridModel">
+    <Position X="17.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABQAAAAAgIAAQAAAAAAAAAAAAIAQJAEAAAAAAAkAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\model\GridModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.Model.GridPresenter">
+    <Position X="15.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAIAAIAEAAAAEAAAEACBAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\model\GridPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.Model.MobilePresenter">
+    <Position X="16" Y="20.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAQAEAAAAAAIAAAAAAAAAAAAAAQAAAIAAAAAqAA=</HashCode>
+      <FileName>scripts\handleTheCrate\model\MobilePresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.Model.Presenter">
+    <Position X="17" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAEAAAAIAAAAAAAAACQAAAAAAAAgAA=</HashCode>
+      <FileName>scripts\handleTheCrate\model\Presenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.View.Iso.CrateIsoView">
+    <Position X="7.25" Y="27.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAIAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\view\iso\CrateIsoView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.View.Iso.HandleIsoView">
+    <Position X="9.5" Y="27.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\view\iso\HandleIsoView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.View.Iso.ObjectIsoView">
+    <Position X="5" Y="24" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAgAABAAAEBAAAIAEAAAAAAACAAAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\view\iso\ObjectIsoView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.View.Iso.PlayerIsoView">
+    <Position X="0.5" Y="27.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAqAAEAAAAAAAAAAAAAAAAAAAAAEAAAAAAAACCAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\view\iso\PlayerIsoView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.View.Iso.TargetIsoView">
+    <Position X="2.75" Y="27.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\view\iso\TargetIsoView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.View.Iso.WallIsoView">
+    <Position X="5" Y="27.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\view\iso\WallIsoView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.View.Radar.CrateRadarView">
+    <Position X="5" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\view\radar\CrateRadarView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.View.Radar.HandleRadarView">
+    <Position X="7.25" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\view\radar\HandleRadarView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.View.Radar.ObjectRadarView">
+    <Position X="5" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAgAAAAAAAAAAABAAAEAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\view\radar\ObjectRadarView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.View.Radar.PlayerRadarView">
+    <Position X="9.5" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAqAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACCAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\view\radar\PlayerRadarView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.View.Radar.TargetRadarView">
+    <Position X="0.5" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\view\radar\TargetRadarView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.View.Radar.WallRadarView">
+    <Position X="2.75" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\view\radar\WallRadarView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.View.CameraEffects">
+    <Position X="15.75" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAACAABgAAAAAAAAEAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\view\CameraEffects.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Utils.Game.IsoManager">
+    <Position X="17.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAgAAAAQAAAAAAGAAAgAAA=</HashCode>
+      <FileName>scripts\utils\IsoManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.JsonLoader">
+    <Position X="11.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAgAAAAAiAAAAAAAAYAAQAAAAAAAAAIAAIAEAAAAAAA=</HashCode>
+      <FileName>scripts\utils\JsonLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.Help">
+    <Position X="8.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAEAAAAUACAAAAAAAAAAAAEAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>scripts\Help.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.Login">
+    <Position X="0.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAAAACgAAAAgAAAABAgAAAAAgAAAQAAAAAAAAAA=</HashCode>
+      <FileName>scripts\Login.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.Main">
+    <Position X="4.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAEACAAAAAAAkAAAAgAgEACAAAAQAAAAAAAEAA=</HashCode>
+      <FileName>scripts\Main.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.Utils.JsonParseHelper">
+    <Position X="11.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAgAAIAOAKAAAAQA=</HashCode>
+      <FileName>scripts\utils\JsonParseHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.Utils.JsonProfilSystem">
+    <Position X="2.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAQACAEAAAAAgAAAAIAAAAAAAAAAAAgAIAACAAAAAA=</HashCode>
+      <FileName>scripts\utils\JsonProfilSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Com.IsartDigital.HandleTheCrate.utils.game.RadarManager">
+    <Position X="17.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAQAAOAAEgAAA=</HashCode>
+      <FileName>scripts\utils\RadarManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Com.IsartDigital.HandleTheCrate.Model.Object.UndoRedoAction">
+    <Position X="19.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AICACAAAAAAAAAAAAAAAAAAAAAAAAAAAAACIAAAAAAA=</HashCode>
+      <FileName>scripts\handleTheCrate\model\object\PlayerPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Com.IsartDigital.HandleTheCrate.LevelInfo">
+    <Position X="11.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAQAAAAAQAAAAAAAAAAAAAFAAAAAAAQAAAEAAA=</HashCode>
+      <FileName>scripts\utils\JsonLoader.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Com.IsartDigital.HandleTheCrate.Utils.Profil">
+    <Position X="2.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAIgIAAACAEAAAABQAAAAAICAA=</HashCode>
+      <FileName>scripts\utils\Profil.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Com.IsartDigital.HandleTheCrate.Utils.PlayerData">
+    <Position X="2.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>scripts\utils\Profil.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

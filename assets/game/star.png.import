@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/star.png-039b381700a663a48cee1a93b38bf4dc.res"
+group_file="res://assets/spritesAtlas.png"
+valid=true
+[deps]
+
+
+source_file="res://assets/game/star.png"
+dest_files=[ "res://.import/star.png-039b381700a663a48cee1a93b38bf4dc.res" ]
+
+[params]
+
+atlas_file="res://assets/spritesAtlas.png"
+import_mode=0
+crop_to_region=false

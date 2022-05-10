@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/game/iso/objects/poignee1sokoban.png" type="Texture" id=1]
+[ext_resource path="res://scripts/handleTheCrate/view/iso/HandleIsoView.cs" type="Script" id=2]
+[ext_resource path="res://assets/material/shaderMaterial/Handles_ShaderMaterial.tres" type="Material" id=3]
+
+[node name="Handle" type="Sprite"]
+material = ExtResource( 3 )
+position = Vector2( -1, 0 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]

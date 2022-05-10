@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float miniValue : hint_range(0.0,1.0);
+uniform float amplitude: hint_range(0.0, 1.0);
+
+void fragment()
+{
+	vec4 tex = texture(TEXTURE, UV);
+	
+	tex.rgb *= SCREEN_UV.x*amplitude + miniValue;
+
+	COLOR = tex;
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/miniValue = 0.7
+shader_param/amplitude = 1.0

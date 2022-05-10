@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/game/iso/objects/mur_sokoban.png" type="Texture" id=1]
+[ext_resource path="res://scripts/handleTheCrate/view/iso/WallIsoView.cs" type="Script" id=2]
+
+[node name="MovableWall" type="Sprite"]
+modulate = Color( 0.25098, 1, 0.145098, 1 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, 192 )
+script = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]

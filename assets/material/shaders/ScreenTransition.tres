@@ -1,0 +1,25 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform float progress : hint_range(0.0, 1.0);
+uniform float spaceX : hint_range(0.0, 1.0);
+uniform float spaceY : hint_range(0.0, 1.0);
+uniform vec4 color : hint_color = vec4(0.0, 1.02, 1.2, 1.0);
+
+// We are generating our own noise here. You could experiment with the 
+void fragment()
+{
+	vec4 tex = texture(TEXTURE, UV);
+	
+	vec2 space = vec2(spaceX, spaceY);
+	
+	vec2 closest = round(UV/space) * space;
+	
+	if(distance(UV, closest) < progress){
+		tex.rgba = vec4(1,1,1,0);
+	}
+	
+	COLOR = tex;
+}"

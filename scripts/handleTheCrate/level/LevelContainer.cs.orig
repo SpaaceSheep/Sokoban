@@ -1,0 +1,138 @@
+using Godot;
+using Com.IsartDigital.HandleTheCrate.Menu.Loader;
+<<<<<<< HEAD
+using Com.IsartDigital.HandleTheCrate.Level.Loader;
+using Com.IsartDigital.HandleTheCrate.Model;
+using Com.IsartDigital.HandleTheCrate.Level;
+=======
+using Com.IsartDigital.HandleTheCrate.View.Iso;
+using Com.IsartDigital.HandleTheCrate.Model;
+>>>>>>> playermodelmouvement
+
+namespace Com.IsartDigital.HandleTheCrate.Menu
+{
+    public class LevelContainer : Control
+    {
+        protected const string PRESSED = "pressed";
+
+        [Export] readonly NodePath quitButtonPath;
+        [Export] readonly NodePath undoButtonPath;
+        [Export] readonly NodePath redoButtonPath;
+        [Export] readonly NodePath retryButtonPath;
+
+        Button quitButton;
+        Button undoButton;
+        Button redoButton;
+        Button retryButton;
+
+        PlayerIsoView playerIso;
+
+        [Export] protected int CELL_SIZE = 50;
+        [Export] readonly PackedScene isoScenePacked;
+        [Export] readonly PackedScene radarScenePacked;
+
+        public static LevelContainer Instance { get; private set; }
+
+        private LevelContainer ():base() {}
+
+        public override void _Ready()
+        {
+            if (Instance != null){  
+                Free();
+                GD.Print($"{nameof(LevelContainer)} Instance already exist, destroying the last added.");
+                return;
+            }
+            
+            Instance = this;
+
+            InitButtons();
+
+        }
+
+        protected void InitButtons()
+        {
+            quitButton = (Button)GetNode(quitButtonPath);
+            undoButton = (Button)GetNode(undoButtonPath);
+            redoButton = (Button)GetNode(redoButtonPath);
+            retryButton = (Button)GetNode(retryButtonPath);
+
+            quitButton.Connect(PRESSED, this, nameof(ReturnToMenu));
+            undoButton.Connect(PRESSED, this, nameof(Undo));
+            redoButton.Connect(PRESSED, this, nameof(Redo));
+            retryButton.Connect(PRESSED, this, nameof(Retry));
+        }
+
+        public void ReturnToMenu()
+        {
+            MainMenu.Instance.Show();
+            QueueFree();
+        }
+
+
+        protected void Undo()
+        {
+            GD.Print("Undo");
+        }
+
+        protected void Redo()
+        {
+            GD.Print("Redo");
+        }
+
+        protected void Retry()
+        {
+            IsoLoader.Instance.GetParent().Free();
+            AddChild(isoScenePacked.Instance());
+            IsoLoader.Instance.Load();
+
+            RadarLoader.Instance.GetParent().Free();
+            AddChild(radarScenePacked.Instance());
+            RadarLoader.Instance.Load();
+            GridPresenter.MovePlayer(Vector2.Left);
+        }
+
+
+        public override void _UnhandledKeyInput(InputEventKey @event)
+        {
+            if (playerIso == null)
+                playerIso = (PlayerIsoView)GetNode("/root/Main/GameContainer/Level/LevelContainer/IsoContainer/LevelContent/Objects").GetNode("Player");
+            
+            Vector2 lPos = playerIso.Position;
+
+            base._UnhandledKeyInput(@event);
+
+            if (@event is InputEventKey eventKey)
+            {
+                if (eventKey.Pressed && !eventKey.Echo)
+                {
+                    if (eventKey.Scancode == (int)KeyList.Q)
+                    {
+                        GridPresenter.MovePlayer(Vector2.Left);
+                    }
+                    else if (eventKey.Scancode == (int)KeyList.D)
+                    {
+                        GridPresenter.MovePlayer(Vector2.Right);
+                    }
+                    if (eventKey.Scancode == (int)KeyList.Z)
+                    {
+                        GridPresenter.MovePlayer(Vector2.Up);
+                    }
+                    else if (eventKey.Scancode == (int)KeyList.S)
+                    {
+                        GridPresenter.MovePlayer(Vector2.Down);
+                    }
+
+                    playerIso.Position = lPos;
+                }
+            }
+        }
+
+        protected override void Dispose(bool pDisposing)
+        {
+            if (pDisposing && Instance == this) 
+                Instance = null;
+
+            base.Dispose(pDisposing);
+        }
+    }
+}

@@ -1,0 +1,99 @@
+using Com.IsartDigital.HandleTheCrate.Level.Loader;
+using Com.IsartDigital.HandleTheCrate.Menu.Loader;
+using Com.IsartDigital.HandleTheCrate.Model.Object;
+using Com.IsartDigital.HandleTheCrate.utils.game;
+using Com.IsartDigital.HandleTheCrate.View.Iso;
+using Com.IsartDigital.HandleTheCrate.View.Radar;
+using Com.IsartDigital.Utils.Game;
+using Godot;
+using System;
+using System.Collections.Generic;
+
+namespace Com.IsartDigital.HandleTheCrate.Model
+{
+    public class Presenter
+    {
+        public List<Vector2> positions = new List<Vector2>();
+        
+        public Vector2 position;
+        public int currentPosition = -1;
+
+        public ObjectIsoView isoLink;
+        public ObjectRadarView radarLink;
+
+        //on utilise le constructeur pour recuperer les view, override pour passer les instances
+        public Presenter(ObjectIsoView pIsoLink, ObjectRadarView pRadarLink)
+        {
+            isoLink = pIsoLink;
+            radarLink = pRadarLink;
+        }
+
+        public override string ToString()
+        {
+            return " ";
+        }
+
+<<<<<<< HEAD
+        //creer les objets iso et radar, les addchild et les positionner
+=======
+        public void AddProperties()
+        {
+            if (currentPosition < positions.Count - 1)
+            {
+                positions.RemoveRange(currentPosition + 1, positions.Count - currentPosition - 1);
+            }
+            currentPosition++;
+            positions.Add(position);
+        }
+
+        public void Undo()
+        {
+            currentPosition = Mathf.Clamp(currentPosition - 1, 0, positions.Count);
+            if (position != positions[currentPosition]) {
+                MoveView(position, positions[currentPosition]);
+            }
+            position = positions[currentPosition];
+        }
+
+        public void Redo()
+        {
+            currentPosition = Mathf.Clamp(currentPosition +1 , 0, positions.Count-1);
+            if (position != positions[currentPosition])
+            {
+                MoveView(position, positions[currentPosition]);
+            }
+            position = positions[currentPosition];
+        }
+
+
+>>>>>>> presenter/undoredo
+        public void SetView()
+        {
+            IsoLoader.Instance.GetObjectParent().AddChild(isoLink);
+            isoLink.Position = IsoManager.ModelToIsoView(position) + IsoLoader.TILE_OFFSET;
+            isoLink.ZIndex = IsoManager.GetZIndex(position);
+
+            RadarLoader.Instance.GetObjectParent().AddChild(radarLink);
+            radarLink.Position = RadarManager.ModelToRadarView(position);
+            radarLink.ZIndex = RadarManager.GetZIndex(position);
+        }
+
+        //bouger la view de la case X a Y
+        public void MoveView(Vector2 pFrom, Vector2 pTo)
+        {
+            if(pFrom == pTo)
+            {
+                isoLink.Blocked();
+                radarLink.Blocked();
+            }
+            else
+            {
+                isoLink.MoveTo(IsoManager.ModelToIsoView(pTo) + IsoLoader.TILE_OFFSET);
+                isoLink.ZIndex = IsoManager.GetZIndex(pTo);
+                radarLink.MoveTo(RadarManager.ModelToRadarView(pTo));
+                radarLink.ZIndex = RadarManager.GetZIndex(pTo);
+            }
+        }
+    }
+}
+

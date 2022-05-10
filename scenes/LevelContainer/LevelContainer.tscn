@@ -1,0 +1,237 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://scripts/handleTheCrate/level/LevelContainer.cs" type="Script" id=1]
+[ext_resource path="res://scenes/iso/IsoScene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/radar/RadarScene.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/handleTheCrate/view/CameraEffects.cs" type="Script" id=4]
+[ext_resource path="res://scenes/LevelContainer/Background.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/typo/Myfont-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/themes/Buttons_Theme.tres" type="Theme" id=7]
+[ext_resource path="res://assets/sound/LevelMusic.wav" type="AudioStream" id=8]
+[ext_resource path="res://scenes/LevelContainer/Popup_Tuto.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scripts/handleTheCrate/level/TutoNode.cs" type="Script" id=10]
+[ext_resource path="res://scenes/Menu/WinScreen.tscn" type="PackedScene" id=11]
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 6 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 22, 19 )
+
+[node name="LevelContainer" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_pivot_offset = Vector2( 1, 1 )
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 7 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+TargetApparition = 0.5
+TargetParticulesApparition = 6.5
+CrateApparition = 2.0
+HandlesApparition = 5.0
+PlayerApparition = 2.5
+SpeedApparition = 1.0
+quitButtonPath = NodePath("UI_ButtonsContainer/Quit")
+undoButtonPath = NodePath("UI_ButtonsContainer/Undo")
+redoButtonPath = NodePath("UI_ButtonsContainer/Redo")
+retryButtonPath = NodePath("UI_ButtonsContainer/Retry")
+isoScenePacked = ExtResource( 2 )
+radarScenePacked = ExtResource( 3 )
+musicPlayerPath = NodePath("LevelMusic")
+scorePath = NodePath("Label")
+scoreRefPath = NodePath("ScoreRef")
+
+[node name="Background" parent="." instance=ExtResource( 5 )]
+self_modulate = Color( 0.517647, 0.486275, 1, 1 )
+
+[node name="UI_ButtonsContainer" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_right = -14.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="UI_ButtonsContainer"]
+margin_right = 186.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Button" parent="UI_ButtonsContainer"]
+margin_top = 120.0
+margin_right = 186.0
+margin_bottom = 141.0
+rect_min_size = Vector2( 0, 1 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+custom_fonts/font = SubResource( 7 )
+enabled_focus_mode = 0
+text = "QUIT"
+flat = true
+
+[node name="Retry" type="Button" parent="UI_ButtonsContainer"]
+margin_top = 241.0
+margin_right = 186.0
+margin_bottom = 262.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+custom_fonts/font = SubResource( 4 )
+enabled_focus_mode = 0
+text = "RETRY"
+flat = true
+
+[node name="Redo" type="Button" parent="UI_ButtonsContainer"]
+margin_top = 362.0
+margin_right = 186.0
+margin_bottom = 383.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+custom_fonts/font = SubResource( 3 )
+enabled_focus_mode = 0
+text = "Redo"
+flat = true
+
+[node name="Undo" type="Button" parent="UI_ButtonsContainer"]
+margin_top = 483.0
+margin_right = 186.0
+margin_bottom = 504.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+custom_fonts/font = SubResource( 2 )
+enabled_focus_mode = 0
+text = "Undo"
+flat = true
+
+[node name="IsoContainer" parent="." instance=ExtResource( 2 )]
+
+[node name="TutoNode" type="Control" parent="IsoContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 2.0
+margin_top = -290.0
+margin_right = 2.0
+margin_bottom = 900.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Content" parent="IsoContainer/TutoNode" instance=ExtResource( 9 )]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -500.0
+margin_top = -150.0
+margin_right = 500.0
+rect_min_size = Vector2( 1000, 150 )
+rect_clip_content = false
+size_flags_horizontal = 2
+size_flags_vertical = 2
+bbcode_text = "[center]CONTENT[/center] "
+text = "CONTENT "
+fit_content_height = true
+
+[node name="TriggerZ" type="Area2D" parent="IsoContainer/TutoNode"]
+position = Vector2( -480, 650 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IsoContainer/TutoNode/TriggerZ"]
+shape = SubResource( 5 )
+
+[node name="TriggerA" type="Area2D" parent="IsoContainer/TutoNode"]
+position = Vector2( -272, 546 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IsoContainer/TutoNode/TriggerA"]
+shape = SubResource( 5 )
+
+[node name="TriggerB" type="Area2D" parent="IsoContainer/TutoNode"]
+position = Vector2( -134, 486 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IsoContainer/TutoNode/TriggerB"]
+shape = SubResource( 5 )
+
+[node name="TriggerC" type="Area2D" parent="IsoContainer/TutoNode"]
+position = Vector2( 66, 456 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IsoContainer/TutoNode/TriggerC"]
+shape = SubResource( 5 )
+
+[node name="TriggerD" type="Area2D" parent="IsoContainer/TutoNode"]
+position = Vector2( 200, 520 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IsoContainer/TutoNode/TriggerD"]
+shape = SubResource( 5 )
+
+[node name="RadarContainer" parent="." instance=ExtResource( 3 )]
+
+[node name="Label" type="Label" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 39.0
+margin_top = 108.0
+margin_right = 219.0
+margin_bottom = 141.0
+rect_min_size = Vector2( 180, 0 )
+text = "Steps : X"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreRef" type="Label" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 40.0
+margin_top = 146.0
+margin_right = 225.0
+margin_bottom = 179.0
+text = "ScoreRef: X"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+script = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="Camera2D"]
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="LevelMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="WinScreen" parent="." instance=ExtResource( 11 )]

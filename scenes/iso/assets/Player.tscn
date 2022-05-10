@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/handleTheCrate/view/iso/PlayerIsoView.cs" type="Script" id=2]
+[ext_resource path="res://scenes/iso/MovementTutorial.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+
+uniform float progress : hint_range(0.0, 1.0);
+uniform float noise_desnity = 60;
+uniform float beam_size : hint_range(0.01, 0.15);
+uniform vec4 color : hint_color = vec4(0.0, 1.02, 1.2, 1.0);
+
+// We are generating our own noise here. You could experiment with the 
+// built in SimplexNoise or your own noise texture for other effects.
+vec2 random(vec2 uv){
+    uv = vec2( dot(uv, vec2(127.1,311.7) ),
+               dot(uv, vec2(269.5,183.3) ) );
+    return -1.0 + 2.0 * fract(sin(uv) * 43758.5453123);
+}
+
+float noise(vec2 uv) {
+    vec2 uv_index = floor(uv);
+    vec2 uv_fract = fract(uv);
+
+    vec2 blur = smoothstep(0.0, 1.0, uv_fract);
+
+    return mix( mix( dot( random(uv_index + vec2(0.0,0.0) ), uv_fract - vec2(0.0,0.0) ),
+                     dot( random(uv_index + vec2(1.0,0.0) ), uv_fract - vec2(1.0,0.0) ), blur.x),
+                mix( dot( random(uv_index + vec2(0.0,1.0) ), uv_fract - vec2(0.0,1.0) ),
+                     dot( random(uv_index + vec2(1.0,1.0) ), uv_fract - vec2(1.0,1.0) ), blur.x), blur.y) * 0.5 + 0.5;
+}
+
+void fragment()
+{
+	vec4 tex = texture(TEXTURE, UV);
+	
+	float noise = noise(UV * noise_desnity) * UV.y;
+	
+	float d1 = step(progress, noise);
+	float d2 = step(progress - beam_size, noise);
+	
+	vec3 beam = vec3(d2 - d1) * color.rgb;
+
+	tex.rgb += beam;
+	
+	tex.rgb *= SCREEN_UV.x + 0.5f;
+	
+	tex.a *= d2;
+	
+	COLOR = tex;
+}"
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = SubResource( 4 )
+shader_param/progress = 0.0
+shader_param/noise_desnity = 10.0
+shader_param/beam_size = 0.065
+shader_param/color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+load_path = "res://.import/player_sokoban.png-d2cb2cc5ff5674c22979b0ea50f33279.stex"
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 25.8333, 20 )
+
+[node name="Player2" type="Sprite"]
+pause_mode = 2
+modulate = Color( 0.917647, 0.917647, 0.917647, 1 )
+material = SubResource( 1 )
+scale = Vector2( 0.6, 0.6 )
+texture = SubResource( 2 )
+script = ExtResource( 2 )
+buttonPath = NodePath("Move")
+feetPath = NodePath("Feet")
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Move" type="Button" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -248.333
+margin_top = -263.333
+margin_right = 263.667
+margin_bottom = 248.667
+rect_min_size = Vector2( 512, 512 )
+focus_mode = 0
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Feet" type="Node2D" parent="."]
+
+[node name="MovementTutorial" parent="." instance=ExtResource( 4 )]
+z_index = 5
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 0.833333, 20 )
+shape = SubResource( 5 )

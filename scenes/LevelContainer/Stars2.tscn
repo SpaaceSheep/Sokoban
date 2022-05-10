@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/material/shaders/StarsIdle.tres" type="Shader" id=1]
+[ext_resource path="res://assets/menu fonts/stars1.png" type="Texture" id=2]
+
+[sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/offset = 150.0
+
+[node name="Stars2" type="TextureRect"]
+material = SubResource( 6 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}

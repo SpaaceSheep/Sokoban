@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/handleTheCrate/view/iso/WallIsoView.cs" type="Script" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float miniValue : hint_range(0.0,1.0);
+uniform float amplitude: hint_range(0.0, 1.0);
+uniform float offset = 0;
+
+void fragment()
+{
+	vec4 tex = texture(TEXTURE, UV);
+	
+	tex.rgb *= SCREEN_UV.x*amplitude + miniValue;
+	
+	if(sin((SCREEN_UV.x / SCREEN_PIXEL_SIZE.x + SCREEN_UV.y / SCREEN_PIXEL_SIZE.y) * 0.1f + TIME*2f)  < 0f){
+		tex.rgb -= offset;//offset * (sin(TIME * 2f) * 0.5f + 0.5f);
+	}
+
+	COLOR = tex;
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/miniValue = 0.7
+shader_param/amplitude = 1.0
+shader_param/offset = 0.0
+
+[sub_resource type="StreamTexture" id=3]
+flags = 4
+load_path = "res://.import/mur_sokoban.png-08d8f88a34ce24fb3c4ef6438250738c.stex"
+
+[node name="Wall2" type="Sprite"]
+material = SubResource( 4 )
+scale = Vector2( 0.6, 0.6 )
+texture = SubResource( 3 )
+script = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]

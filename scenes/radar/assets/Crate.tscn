@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/game/radar/crateflat.png" type="Texture" id=1]
+[ext_resource path="res://scripts/handleTheCrate/view/radar/CrateRadarView.cs" type="Script" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float offset = 0;
+
+void fragment()
+{
+	vec4 tex = texture(TEXTURE, UV);
+	
+	if(sin((UV.x + UV.y) * 10f + TIME*2f)  < 0f){
+		tex.rgb -= offset;//offset * (sin(TIME * 2f) * 0.5f + 0.5f);
+	}
+
+	COLOR = tex;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/offset = 0.0
+
+[node name="Crate" type="Sprite"]
+pause_mode = 2
+material = SubResource( 2 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, 3 )
+script = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]

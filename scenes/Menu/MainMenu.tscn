@@ -1,0 +1,485 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://scripts/handleTheCrate/menu/MainMenu.cs" type="Script" id=1]
+[ext_resource path="res://scripts/handleTheCrate/menu/SelectLevel.cs" type="Script" id=2]
+[ext_resource path="res://scenes/Menu/Level/ButtonLevel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/LevelContainer/Background.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/LevelContainer/LevelContainer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/themes/Buttons_Theme.tres" type="Theme" id=6]
+[ext_resource path="res://assets/typo/dynamicfont.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/menu fonts/eng.png" type="Texture" id=8]
+[ext_resource path="res://assets/typo/ContentFont.tres" type="DynamicFont" id=9]
+[ext_resource path="res://scripts/Help.cs" type="Script" id=10]
+[ext_resource path="res://assets/menu fonts/frtest.png" type="Texture" id=12]
+[ext_resource path="res://scenes/Menu/HighScores.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/menu fonts/sonon.png" type="Texture" id=14]
+[ext_resource path="res://assets/menu fonts/sonoff.png" type="Texture" id=15]
+[ext_resource path="res://assets/menu fonts/titre.png" type="Texture" id=16]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/typo/Myfont-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=9]
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = SubResource( 1 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 6 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+selectLevelPath = NodePath("SelectLevel")
+openHelpPath = NodePath("Credits")
+welcomeTextPath = NodePath("Menu/WelcomingText")
+boxContainerPath = [ NodePath("Menu/CentralButtons/Playbtn"), NodePath("Menu/CentralButtons/Levelsbtn"), NodePath("Menu/CentralButtons/HighScores"), NodePath("Menu/CentralButtons/LogOut"), NodePath("Menu/RightButtons/Soundbtn"), NodePath("Menu/RightButtons/Languebtn") ]
+soundOnTexture = ExtResource( 14 )
+soundOffTexture = ExtResource( 15 )
+laFrance = ExtResource( 12 )
+lesAnglois = ExtResource( 8 )
+highScoresScene = ExtResource( 13 )
+creditBtnPath = NodePath("Menu/CentralButtons/Credits")
+creditScnPath = NodePath("Credits")
+
+[node name="Menu" type="NinePatchRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Background" parent="Menu" instance=ExtResource( 4 )]
+self_modulate = Color( 0.517647, 0.486275, 1, 1 )
+
+[node name="Title" type="TextureRect" parent="Menu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -432.0
+margin_right = 448.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 16 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CentralButtons" type="VBoxContainer" parent="Menu"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -128.0
+margin_top = 260.0
+margin_right = 128.0
+margin_bottom = -88.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Playbtn" type="Button" parent="Menu/CentralButtons"]
+margin_left = 101.0
+margin_top = 13.0
+margin_right = 154.0
+margin_bottom = 34.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 9 )
+text = "PLAY"
+flat = true
+expand_icon = true
+
+[node name="Levelsbtn" type="Button" parent="Menu/CentralButtons"]
+margin_left = 92.0
+margin_top = 64.0
+margin_right = 164.0
+margin_bottom = 85.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 2 )
+text = "LEVELS"
+flat = true
+
+[node name="HighScores" type="Button" parent="Menu/CentralButtons"]
+margin_left = 63.0
+margin_top = 115.0
+margin_right = 192.0
+margin_bottom = 136.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 3 )
+text = "LEADERBOARD"
+flat = true
+
+[node name="Credits" type="Button" parent="Menu/CentralButtons"]
+margin_left = 90.0
+margin_top = 166.0
+margin_right = 165.0
+margin_bottom = 187.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 3 )
+text = "CREDITS"
+flat = true
+
+[node name="LogOut" type="Button" parent="Menu/CentralButtons"]
+margin_left = 85.0
+margin_top = 217.0
+margin_right = 170.0
+margin_bottom = 238.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 4 )
+text = "LOG_OUT"
+flat = true
+
+[node name="RightButtons" type="VBoxContainer" parent="Menu"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -73.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Soundbtn" type="TextureButton" parent="Menu/RightButtons"]
+margin_right = 50.0
+margin_bottom = 38.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 14 )
+
+[node name="Languebtn" type="TextureButton" parent="Menu/RightButtons"]
+margin_left = 5.0
+margin_top = 42.0
+margin_right = 45.0
+margin_bottom = 68.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WelcomingText" type="RichTextLabel" parent="Menu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -259.0
+margin_top = -50.0
+margin_right = 259.0
+rect_min_size = Vector2( 0, 50 )
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[center]WELCOME [/center]"
+text = "WELCOME "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectLevel" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+goBackBtnPath = NodePath("VBoxContainer/UpperButtons/goBackBtn")
+unlockLevelPath = NodePath("VBoxContainer/UpperButtons/unlocklevelBtn")
+levelsScoreReferences = PoolIntArray( 28, 48, 34, 52, 58, 65, 0, 0, 0, 0, 0 )
+levelsBestScoreReferences = PoolIntArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+levelContainerPackedScene = ExtResource( 5 )
+
+[node name="Background" parent="SelectLevel" instance=ExtResource( 4 )]
+self_modulate = Color( 0.517647, 0.486275, 1, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SelectLevel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpperButtons" type="HBoxContainer" parent="SelectLevel/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 2
+alignment = 1
+
+[node name="Empty1" type="Control" parent="SelectLevel/VBoxContainer/UpperButtons"]
+margin_right = 50.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 50, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="goBackBtn" type="Button" parent="SelectLevel/VBoxContainer/UpperButtons"]
+margin_left = 54.0
+margin_top = 39.0
+margin_right = 108.0
+margin_bottom = 60.0
+size_flags_horizontal = 2
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 6 )
+text = "MENU"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="unlocklevelBtn" type="Button" parent="SelectLevel/VBoxContainer/UpperButtons"]
+margin_left = 833.0
+margin_top = 39.0
+margin_right = 970.0
+margin_bottom = 60.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 7 )
+text = "UNLOCK_LEVELS"
+flat = true
+
+[node name="Empty2" type="Control" parent="SelectLevel/VBoxContainer/UpperButtons"]
+margin_left = 974.0
+margin_right = 1024.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 50, 0 )
+
+[node name="Tuto" parent="SelectLevel/VBoxContainer" instance=ExtResource( 3 )]
+margin_left = 506.0
+margin_top = 104.0
+margin_right = 518.0
+margin_bottom = 143.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 9 )
+
+[node name="levelButtons" type="HBoxContainer" parent="SelectLevel/VBoxContainer"]
+margin_top = 147.0
+margin_right = 1024.0
+margin_bottom = 518.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LeftColumn" type="VBoxContainer" parent="SelectLevel/VBoxContainer/levelButtons"]
+margin_right = 510.0
+margin_bottom = 371.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonLevel2" parent="SelectLevel/VBoxContainer/levelButtons/LeftColumn" instance=ExtResource( 3 )]
+margin_left = 249.0
+margin_right = 261.0
+margin_bottom = 71.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="ButtonLevel3" parent="SelectLevel/VBoxContainer/levelButtons/LeftColumn" instance=ExtResource( 3 )]
+margin_left = 249.0
+margin_top = 75.0
+margin_right = 261.0
+margin_bottom = 146.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="ButtonLevel4" parent="SelectLevel/VBoxContainer/levelButtons/LeftColumn" instance=ExtResource( 3 )]
+margin_left = 249.0
+margin_top = 150.0
+margin_right = 261.0
+margin_bottom = 221.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="ButtonLevel5" parent="SelectLevel/VBoxContainer/levelButtons/LeftColumn" instance=ExtResource( 3 )]
+margin_left = 249.0
+margin_top = 225.0
+margin_right = 261.0
+margin_bottom = 296.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="ButtonLevel6" parent="SelectLevel/VBoxContainer/levelButtons/LeftColumn" instance=ExtResource( 3 )]
+margin_left = 249.0
+margin_top = 300.0
+margin_right = 261.0
+margin_bottom = 371.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="RightColumn2" type="VBoxContainer" parent="SelectLevel/VBoxContainer/levelButtons"]
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 371.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonLevel7" parent="SelectLevel/VBoxContainer/levelButtons/RightColumn2" instance=ExtResource( 3 )]
+margin_left = 249.0
+margin_right = 261.0
+margin_bottom = 71.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="ButtonLevel8" parent="SelectLevel/VBoxContainer/levelButtons/RightColumn2" instance=ExtResource( 3 )]
+margin_left = 249.0
+margin_top = 75.0
+margin_right = 261.0
+margin_bottom = 146.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="ButtonLevel9" parent="SelectLevel/VBoxContainer/levelButtons/RightColumn2" instance=ExtResource( 3 )]
+margin_left = 249.0
+margin_top = 150.0
+margin_right = 261.0
+margin_bottom = 221.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="ButtonLevel10" parent="SelectLevel/VBoxContainer/levelButtons/RightColumn2" instance=ExtResource( 3 )]
+margin_left = 249.0
+margin_top = 225.0
+margin_right = 261.0
+margin_bottom = 296.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="ButtonLevel11" parent="SelectLevel/VBoxContainer/levelButtons/RightColumn2" instance=ExtResource( 3 )]
+margin_left = 249.0
+margin_top = 300.0
+margin_right = 261.0
+margin_bottom = 371.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="Empty3" type="Control" parent="SelectLevel/VBoxContainer"]
+margin_top = 522.0
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+helpbtns = NodePath("VBoxContainer/HBoxContainer/Backbtn")
+
+[node name="Background" parent="Credits" instance=ExtResource( 4 )]
+self_modulate = Color( 0.517647, 0.486275, 1, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Credits/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 100.0
+
+[node name="Empty2" type="Control" parent="Credits/VBoxContainer/HBoxContainer"]
+margin_right = 55.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 55, 0 )
+rect_pivot_offset = Vector2( -1368, 128 )
+
+[node name="Backbtn" type="Button" parent="Credits/VBoxContainer/HBoxContainer"]
+margin_left = 59.0
+margin_top = 33.0
+margin_right = 144.0
+margin_bottom = 66.0
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 8 )
+text = "MENU"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="CreatedBy" type="Label" parent="Credits/VBoxContainer/HBoxContainer"]
+margin_left = 148.0
+margin_right = 880.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 3
+text = "CREATED BY"
+align = 1
+valign = 1
+
+[node name="Empty1" type="Control" parent="Credits/VBoxContainer/HBoxContainer"]
+margin_left = 884.0
+margin_right = 1024.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 140, 0 )
+rect_pivot_offset = Vector2( -1368, 128 )
+
+[node name="People" type="Label" parent="Credits/VBoxContainer"]
+margin_top = 104.0
+margin_right = 1024.0
+margin_bottom = 476.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 7 )
+text = "Alice Chaix
+Titouan Dobbé
+Téo Le Négaret
+Raphael Tan
+Gabriel Mattana"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Empty2" type="Control" parent="Credits/VBoxContainer"]
+margin_top = 480.0
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 0, 120 )

@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/material/shaders/StarsIdle.tres" type="Shader" id=1]
+[ext_resource path="res://scenes/LevelContainer/Stars1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/LevelContainer/Stars2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/menu fonts/background.png" type="Texture" id=4]
+[ext_resource path="res://assets/menu fonts/stars1.png" type="Texture" id=5]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float offset;
+
+vec2 random(vec2 uv){
+    uv = vec2( dot(uv, vec2(127.1,311.7) ),
+               dot(uv, vec2(269.5,183.3) ) );
+    return -1.0 + 2.0 * fract(sin(uv) * 43758.5453123);
+}
+
+float noise(vec2 uv) {
+    vec2 uv_index = floor(uv);
+    vec2 uv_fract = fract(uv);
+
+    vec2 blur = smoothstep(0.0, 1.0, uv_fract);
+
+    return mix( mix( dot( random(uv_index + vec2(0.0,0.0) ), uv_fract - vec2(0.0,0.0) ),
+                     dot( random(uv_index + vec2(1.0,0.0) ), uv_fract - vec2(1.0,0.0) ), blur.x),
+                mix( dot( random(uv_index + vec2(0.0,1.0) ), uv_fract - vec2(0.0,1.0) ),
+                     dot( random(uv_index + vec2(1.0,1.0) ), uv_fract - vec2(1.0,1.0) ), blur.x), blur.y) * 0.5 + 0.5;
+}
+void fragment()
+{
+	vec4 tex = texture(TEXTURE, UV + noise(vec2(TIME * 0.1f + offset + UV)) * 0.02f);
+	COLOR = tex * noise(vec2(TIME + UV)) * 2f;
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id=8]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/offset = 150.0
+
+[node name="Background" type="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stars1" parent="." instance=ExtResource( 2 )]
+material = SubResource( 5 )
+
+[node name="Stars2" parent="." instance=ExtResource( 3 )]
+material = SubResource( 8 )
+texture = ExtResource( 5 )
+flip_h = true
+flip_v = true

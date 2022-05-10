@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/game/radar/wallflat.png" type="Texture" id=1]
+[ext_resource path="res://scripts/handleTheCrate/view/radar/WallRadarView.cs" type="Script" id=2]
+
+[node name="MovableWall" type="Sprite"]
+modulate = Color( 1, 1, 0, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Tween" type="Tween" parent="."]
